@@ -1,5 +1,5 @@
 <template>
-  <defa <div>
+  <div>
     <p>This is the index page</p>
-    </div>
+  </div>
 </template>
