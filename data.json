@@ -227,5 +227,178 @@
       }
     ],
     "total": 3102.04
+  },
+  {
+    "id": "KL4521",
+    "createdAt": "2021-11-10",
+    "paymentDue": "2021-11-17",
+    "description": "Mobile App UI",
+    "paymentTerms": 7,
+    "clientName": "Sophie Turner",
+    "clientEmail": "sophie.turner@mail.com",
+    "status": "pending",
+    "senderAddress": {
+      "street": "22 Baker Street",
+      "city": "London",
+      "postCode": "NW1 6XE",
+      "country": "United Kingdom"
+    },
+    "clientAddress": {
+      "street": "12 Maple Avenue",
+      "city": "Manchester",
+      "postCode": "M1 2AB",
+      "country": "United Kingdom"
+    },
+    "items": [
+      {
+        "name": "UI Design",
+        "quantity": 2,
+        "price": 1200.00,
+        "total": 2400.00
+      }
+    ],
+    "total": 2400.00
+  },
+  {
+    "id": "GH7890",
+    "createdAt": "2021-12-01",
+    "paymentDue": "2021-12-15",
+    "description": "SEO Optimization",
+    "paymentTerms": 14,
+    "clientName": "Michael Scott",
+    "clientEmail": "michael@dundermifflin.com",
+    "status": "paid",
+    "senderAddress": {
+      "street": "1725 Slough Avenue",
+      "city": "Scranton",
+      "postCode": "18505",
+      "country": "United States of America"
+    },
+    "clientAddress": {
+      "street": "42 Paper Lane",
+      "city": "Scranton",
+      "postCode": "18504",
+      "country": "United States of America"
+    },
+    "items": [
+      {
+        "name": "SEO Audit",
+        "quantity": 1,
+        "price": 800.00,
+        "total": 800.00
+      },
+      {
+        "name": "Keyword Research",
+        "quantity": 1,
+        "price": 400.00,
+        "total": 400.00
+      }
+    ],
+    "total": 1200.00
+  },
+  {
+    "id": "PL3344",
+    "createdAt": "2021-12-10",
+    "paymentDue": "2021-12-24",
+    "description": "E-commerce Website",
+    "paymentTerms": 14,
+    "clientName": "Rachel Green",
+    "clientEmail": "rachel.green@fashion.com",
+    "status": "pending",
+    "senderAddress": {
+      "street": "5th Avenue",
+      "city": "New York",
+      "postCode": "10010",
+      "country": "United States of America"
+    },
+    "clientAddress": {
+      "street": "123 Fashion St",
+      "city": "New York",
+      "postCode": "10011",
+      "country": "United States of America"
+    },
+    "items": [
+      {
+        "name": "Website Development",
+        "quantity": 1,
+        "price": 9000.00,
+        "total": 9000.00
+      },
+      {
+        "name": "Hosting Setup",
+        "quantity": 1,
+        "price": 200.00,
+        "total": 200.00
+      }
+    ],
+    "total": 9200.00
+  },
+  {
+    "id": "ZX1122",
+    "createdAt": "2022-01-05",
+    "paymentDue": "2022-01-20",
+    "description": "Social Media Campaign",
+    "paymentTerms": 15,
+    "clientName": "Linda Brown",
+    "clientEmail": "linda.brown@marketing.com",
+    "status": "draft",
+    "senderAddress": {
+      "street": "88 King Street",
+      "city": "Edinburgh",
+      "postCode": "EH1 1YZ",
+      "country": "United Kingdom"
+    },
+    "clientAddress": {
+      "street": "77 Queen Road",
+      "city": "Glasgow",
+      "postCode": "G1 2FF",
+      "country": "United Kingdom"
+    },
+    "items": [
+      {
+        "name": "Campaign Strategy",
+        "quantity": 1,
+        "price": 1500.00,
+        "total": 1500.00
+      },
+      {
+        "name": "Content Creation",
+        "quantity": 3,
+        "price": 300.00,
+        "total": 900.00
+      }
+    ],
+    "total": 2400.00
+  },
+  {
+    "id": "MN5566",
+    "createdAt": "2022-01-15",
+    "paymentDue": "2022-01-22",
+    "description": "Business Card Design",
+    "paymentTerms": 7,
+    "clientName": "Oscar Martinez",
+    "clientEmail": "oscar.martinez@dundermifflin.com",
+    "status": "paid",
+    "senderAddress": {
+      "street": "1725 Slough Avenue",
+      "city": "Scranton",
+      "postCode": "18505",
+      "country": "United States of America"
+    },
+    "clientAddress": {
+      "street": "99 Main Street",
+      "city": "Scranton",
+      "postCode": "18503",
+      "country": "United States of America"
+    },
+    "items": [
+      {
+        "name": "Business Card Design",
+        "quantity": 1,
+        "price": 250.00,
+        "total": 250.00
+      }
+    ],
+    "total": 250.00
   }
 ]
