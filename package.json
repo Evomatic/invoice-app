@@ -16,5 +16,9 @@
   },
   "engines": {
     "node": "24.1.0"
+  },
+  "devDependencies": {
+    "naive-ui": "^2.42.0",
+    "vfonts": "^0.0.3"
   }
 }
