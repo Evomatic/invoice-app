@@ -1,5 +1,7 @@
 # Title
 
+## Status
+
 ## Context
 
 Background and explanation of the problem that necessitated this decision.
