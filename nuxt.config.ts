@@ -2,6 +2,7 @@ import { defineNuxtConfig } from "nuxt/config";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  extends: ["./domains/invoices"],
   rootDir: "src",
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
