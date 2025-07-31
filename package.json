@@ -10,15 +10,19 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@prisma/extension-accelerate": "^2.0.2",
+    "@prisma/nuxt": "^0.3.0",
     "nuxt": "^3.17.5",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "zod": "^4.0.14"
   },
   "engines": {
     "node": "24.1.0"
   },
   "devDependencies": {
     "naive-ui": "^2.42.0",
+    "typescript": "^5.8.3",
     "vfonts": "^0.0.3"
   }
 }

@@ -1,10 +1,10 @@
-API Design for Invoice Service
+API Design for Invoice Service (RESTful)
 
 **Status:** Accepted
 
 ## Context
 
-This ADR describes the decision to use an **RPC-style API** for managing invoices. The application revolves around creating, editing, and managing invoices with domain-specific behavior such as drafts, pending status, payment calculations, and status transitions like marking an invoice as paid.
+This ADR describes the decision to use a **RESTful API** for managing invoices. The application revolves around creating, editing, and managing invoices with domain-specific behavior such as drafts, pending status, payment calculations, and status transitions like marking an invoice as paid.
 
 The invoice structure includes nested fields, computed values, and business logic such as:
 
@@ -13,38 +13,17 @@ The invoice structure includes nested fields, computed values, and business logi
 - Calculated fields like `paymentDue` and `total`
 - User actions with distinct UI triggers: "Save as Draft", "Save & Send", "Mark as Paid", "Delete"
 
-This business logic maps more naturally to **action-oriented method calls** rather than traditional resource-based REST.
+This business logic is mapped to resource-based endpoints and HTTP methods.
 
 ## Decision
 
-We will expose a single endpoint:
+We will expose the following endpoints:
 
-```
-POST /api/v1/invoice-service
-```
+### Endpoints
 
-The client sends a JSON payload with a `method` name and associated `params`. Each method encapsulates a user-facing action and business rule.
-
-### Supported Methods
-
-#### `CreateInvoice`
+#### `POST /api/v1/invoices`
 
 Creates a new invoice. The backend generates an ID (e.g., `ZX1122`) if not provided.
-
-```json
-{
-  "method": "CreateInvoice",
-  "params": {
-    "status": "draft",
-    "formData": {
-      "clientName": "",
-      "paymentTerms": 15,
-      "createdAt": "2022-01-05",
-      "items": []
-    }
-  }
-}
-```
 
 - If `status` is `"draft"`, incomplete fields are allowed.
 - If `"pending"`, all required fields must be present.
@@ -52,123 +31,91 @@ Creates a new invoice. The backend generates an ID (e.g., `ZX1122`) if not provi
   - `paymentDue = createdAt + paymentTerms (days)`
   - `total = sum of items[].total`
 
----
-
-#### `UpdateInvoice`
-
-Updates an invoice, used when editing.
-
+**Request Example:**
 ```json
 {
-  "method": "UpdateInvoice",
-  "params": {
-    "invoiceId": "ZX1122",
-    "formData": {
-      "clientName": "Linda Brown",
-      "paymentTerms": 15,
-      "createdAt": "2022-01-05",
-      "items": [...]
-    },
-    "promoteToPending": true
-  }
+  "status": "draft",
+  "clientName": "",
+  "paymentTerms": 15,
+  "createdAt": "2022-01-05",
+  "items": []
 }
 ```
 
-- All fields are required.
-- If `promoteToPending` is `true`, the invoice status changes from `"draft"` to `"pending"`.
+---
+
+#### `PATCH /api/v1/invoices/{invoiceId}`
+
+Updates an invoice, used when editing.
+
+- All fields are required for `"pending"` status.
+- To promote a draft to pending, include `"status": "pending"` in the payload.
+
+**Request Example:**
+```json
+{
+  "clientName": "Linda Brown",
+  "paymentTerms": 15,
+  "createdAt": "2022-01-05",
+  "items": [...],
+  "status": "pending"
+}
+```
 
 ---
 
-#### `MarkInvoiceAsPaid`
+#### `PATCH /api/v1/invoices/{invoiceId}/mark-paid`
 
 Marks an existing invoice as paid.
 
+**Request Example:**
 ```json
-{
-  "method": "MarkInvoiceAsPaid",
-  "params": {
-    "invoiceId": "ZX1122"
-  }
-}
+{}
 ```
 
 - Changes the `status` to `"paid"`.
 
 ---
 
-#### `DeleteInvoice`
+#### `DELETE /api/v1/invoices/{invoiceId}`
 
 Deletes an invoice.
 
+- Requires a confirmation flag in the request body to prevent accidental deletion.
+
+**Request Example:**
 ```json
 {
-  "method": "DeleteInvoice",
-  "params": {
-    "invoiceId": "ZX1122",
-    "confirmed": true
-  }
+  "confirmed": true
 }
 ```
-
-- Requires `confirmed: true` to prevent accidental deletion.
 
 ---
 
-#### `ListInvoices`
-
-Lists invoices, optionally filtered by status.
-
-```json
-{
-  "method": "ListInvoices",
-  "params": {
-    "status": "pending"
-  }
-}
-```
+#### `GET /api/v1/invoices`
 
 Returns an array of invoices matching the filter.
 
 ---
 
-#### `GetInvoice`
+#### `GET /api/v1/invoices/{invoiceId}`
 
 Fetches a single invoice by ID.
-
-```json
-{
-  "method": "GetInvoice",
-  "params": {
-    "invoiceId": "ZX1122"
-  }
-}
-```
 
 ---
 
 ## Alternatives Considered
 
-### RESTful Design
+### RPC-style Design
 
-Initially considered using RESTful endpoints:
-
-- `POST /api/v1/invoices`
-- `PATCH /api/v1/invoices/{invoiceId}`
-- `DELETE /api/v1/invoices/{invoiceId}`
-
-However, this approach made it harder to capture action-specific behavior like:
-
-- `"Save & Send"` promoting status
-- `"Mark as Paid"` vs general update
-- Invoice ID generation rules
+Initially considered using a single RPC-style endpoint with a `method` and `params` payload. While this approach maps well to UI actions, it is less conventional for public APIs and harder to integrate with REST-based tools.
 
 ---
 
 ## Consequences
 
-- More explicit mapping to frontend actions (good for UI-driven apps).
-- Centralized validation and logic in a method-dispatching backend.
-- May be harder to integrate with REST-based tools or public consumers.
+- Follows standard REST conventions, making it easier to integrate with third-party tools and consumers.
+- Validation and business logic are distributed across multiple endpoints.
 
 ## Related
 
