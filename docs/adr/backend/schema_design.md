@@ -9,7 +9,8 @@ The data includes invoices, items, clients, and address information — each wit
 ## Decision
 
 Schema:
-📎 [Schema Diagram – invoices_erd.png](sandbox:/mnt/data/invoices_erd.png)
+<img width="960" height="202" alt="Exchange Max Value Invoice" src="https://github.com/user-attachments/assets/c0dab431-769e-4171-a904-5618a30b23b4" />
+
 
 The schema includes four main entities:
 
