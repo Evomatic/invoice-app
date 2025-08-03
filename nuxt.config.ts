@@ -3,12 +3,13 @@ import { defineNuxtConfig } from "nuxt/config";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   extends: ["./domains/invoices"],
-  rootDir: "src",
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
+
   alias: {
-    "@": "/src",
+    "@": "/",
   },
+
   app: {
     baseURL: "/",
     head: {
@@ -25,7 +26,10 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   devServer: {
     port: 3004,
   },
+
+  modules: ["@prisma/nuxt"],
 });
