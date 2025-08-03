@@ -4,7 +4,6 @@
 
 To support a robust invoices application, we need a clear and normalized database schema.
 The data includes invoices, items, clients, and address information — each with distinct attributes and relationships.
----
 
 ## Decision
 
