@@ -64,19 +64,6 @@ Updates an invoice, used when editing.
 
 ---
 
-#### `PATCH /api/v1/invoices/{invoiceId}/mark-paid`
-
-Marks an existing invoice as paid.
-
-**Request Example:**
-```json
-{}
-```
-
-- Changes the `status` to `"paid"`.
-
----
-
 #### `DELETE /api/v1/invoices/{invoiceId}`
 
 Deletes an invoice.
