@@ -91,14 +91,6 @@ Fetches a single invoice by ID.
 
 ---
 
-## Alternatives Considered
-
-### RPC-style Design
-
-Initially considered using a single RPC-style endpoint with a `method` and `params` payload. While this approach maps well to UI actions, it is less conventional for public APIs and harder to integrate with REST-based tools.
-
----
-
 ## Consequences
 
 - Follows standard REST conventions, making it easier to integrate with third-party tools and consumers.
