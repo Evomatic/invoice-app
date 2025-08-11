@@ -1,9 +1,48 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Invoice {
+  id          String   @id @db.Char(6)
+  createdAt   DateTime @default(now())
+  paymentDue  DateTime
+  description String
+  paymentTerms Int
+  clientName  String
+  clientEmail String
+  status      String
+  senderAddressId Int
+  clientAddressId Int
+
+  senderAddress Address @relation("SenderAddress", fields: [senderAddressId], references: [id])
+  clientAddress Address @relation("ClientAddress", fields: [clientAddressId], references: [id])
+  items         InvoiceItem[]
+}
+
+model Address {
+  id      Int      @id @default(autoincrement())
+  street  String
+  city    String
+  postCode String
+  country String
+
+  senderInvoices Invoice[] @relation("SenderAddress")
+  clientInvoices Invoice[] @relation("ClientAddress")
+}
+
+model InvoiceItem {
+  id        Int     @id @default(autoincrement())
+  invoiceId String  @db.Char(6)
+  name      String
+  quantity  Int
+  price     Decimal @db.Decimal(12, 2)
+  total     Decimal @db.Decimal(12, 2)
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id])
+}
+

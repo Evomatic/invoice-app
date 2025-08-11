@@ -1,25 +1,11 @@
 services:
-  db:
+  postgres:
+    container_name: postgres
     image: postgres:latest
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=invoices
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: invoices
     ports:
-      - "5432:5432"
-    volumes:
-      - dbVol:/var/lib/postgresql/data
-    command: -c logging_collector=on
-volumes:
-  dbVol:
-    driver: local
-    driver_opts:
-      type: none
-      device: "/Users/evan/Code/db/invoice-app"
-      o: bind
+      - "6500:5432"
+    restart: always
