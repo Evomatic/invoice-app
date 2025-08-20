@@ -9,3 +9,6 @@ done
 
 # Run Prisma migration
 npx prisma migrate deploy
+
+# Seed the database
+npm run prisma:seed
