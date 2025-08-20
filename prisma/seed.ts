@@ -1,37 +1,43 @@
-import PrismaClient from '@prisma/client';
-import data from './data.json';
+import { PrismaClient } from '@prisma/client'
+import { readFileSync } from 'fs';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
+
+const data = JSON.parse(
+  readFileSync(new URL('./data.json', import.meta.url), 'utf-8')
+);
 
 async function main() {
   for (const invoice of data) {
-    const { id, items, ...invoiceWithoutItems } = invoice;
-
-    // Upsert the invoice
-    const createdInvoice = await prisma.invoice.upsert({
-      where: { id },
-      update: invoiceWithoutItems,
-      create: { id, ...invoiceWithoutItems },
+    await prisma.invoice.create({
+      data: {
+        id: invoice.id,
+        createdAt: new Date(invoice.createdAt),
+        paymentDue: new Date(invoice.paymentDue),
+        description: invoice.description,
+        paymentTerms: invoice.paymentTerms,
+        clientName: invoice.clientName,
+        clientEmail: invoice.clientEmail,
+        status: invoice.status,
+        senderAddress: {
+          create: invoice.senderAddress,
+        },
+        clientAddress: {
+          create: invoice.clientAddress,
+        },
+        items: {
+          create: invoice.items,
+        },
+      },
     });
-
-    // Upsert the items for the invoice
-    for (const item of items) {
-      await prisma.invoiceItem.upsert({
-        where: { id: item.id },
-        update: item,
-        create: { ...item, invoiceId: createdInvoice.id },
-      });
-    }
   }
 }
-
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   })
   .catch(async (e) => {
-    // eslint-disable-next-line no-console
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })

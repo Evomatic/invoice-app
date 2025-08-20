@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy:db": "./deploy-db.sh"
+    "deploy:db": "./deploy-db.sh",
+    "prisma:seed": "NODE_NO_WARNINGS=1 ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/extension-accelerate": "^2.0.2",
@@ -22,9 +23,11 @@
     "node": "24.1.0"
   },
   "devDependencies": {
+    "@types/node": "^24.3.0",
     "naive-ui": "^2.42.0",
     "prisma": "^6.14.0",
-    "typescript": "^5.8.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
     "vfonts": "^0.0.3"
   },
   "prisma": {
