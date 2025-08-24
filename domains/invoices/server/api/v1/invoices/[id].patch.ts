@@ -1,20 +1,23 @@
-import prisma from "~/prisma/db"
+// server/api/v1/invoices/[id].patch.ts
+import { defineEventHandler, readBody, createError } from 'h3'
+import { InvoiceRepository } from '../../../repositories/InvoiceRepository'
 
-export default defineEventHandler(async(event) => {
+const invoiceRepo = new InvoiceRepository()
+
+export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
   if (!id) {
     throw createError({ statusCode: 400, statusMessage: 'ID parameter is required' })
   }
 
-  const { invoice } = await readBody(event)
-  const updatedInvoice = await prisma.invoice.update({
-    where: { id: id },
-    data: {...invoice}
-  })
+  const body = await readBody(event)
 
-  if (!updatedInvoice) {
-    throw createError({ statusCode: 404, statusMessage: 'Invoice not found' })
+  try {
+    return await invoiceRepo.update(id, body)
+  } catch (e: any) {
+    if (e.code === 'P2025') {
+      throw createError({ statusCode: 404, statusMessage: 'Invoice not found' })
+    }
+    throw createError({ statusCode: 500, statusMessage: 'Failed to update invoice' })
   }
-
-  return updatedInvoice
 })
