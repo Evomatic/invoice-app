@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv .env",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/node": "^24.3.0",
     "naive-ui": "^2.42.0",
+    "ofetch": "^1.4.1",
     "prisma": "^6.14.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
