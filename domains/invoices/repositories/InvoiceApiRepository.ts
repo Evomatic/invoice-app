@@ -2,25 +2,24 @@ import { $fetch } from 'ofetch';
 import type { Invoice } from '../types';
 
 export class InvoiceApiRepository {
-  constructor(private baseURL: string) {}
 
-  getAll() {
-    return $fetch<Invoice[]>(`${this.baseURL}api/v1/invoices`);
+  listInvoices() {
+    return $fetch<Invoice[]>("api/v1/invoices");
   }
 
-  getById(id: string) {
-    return $fetch<Invoice>(`${this.baseURL}/invoices/${id}`);
+  getInvoiceById(id: string) {
+    return $fetch<Invoice>(`api/v1/invoices/${id}`);
   }
 
-  create(data: Partial<Invoice>) {
-    return $fetch<Invoice>(`${this.baseURL}/invoices`, { method: 'POST', body: data });
+  createInvoice(data: Partial<Invoice>) {
+    return $fetch<Invoice>("api/v1/invoices", { method: 'POST', body: data });
   }
 
-  update(id: string, data: Partial<Invoice>) {
-    return $fetch<Invoice>(`${this.baseURL}/invoices/${id}`, { method: 'PUT', body: data });
+  updateInvoice(id: string, data: Partial<Invoice>) {
+    return $fetch<Invoice>(`api/v1/invoices/${id}`, { method: 'PATCH', body: data });
   }
 
-  delete(id: string) {
-    return $fetch<void>(`${this.baseURL}/invoices/${id}`, { method: 'DELETE' });
+  deleteInvoice(id: string) {
+    return $fetch<void>(`api/v1/invoices/${id}`, { method: 'DELETE' });
   }
 }
