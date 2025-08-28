@@ -1,6 +1,8 @@
-import prisma from "~/prisma/db"
+import { defineEventHandler } from "h3"
+import { InvoiceRepository } from "../../../repositories/InvoiceRepository"
+
+const invoiceRepo = new InvoiceRepository()
 
 export default defineEventHandler(async () => {
-  const invoices = await prisma.invoice.findMany({})
-  return invoices
+  return await invoiceRepo.getAll()
 })

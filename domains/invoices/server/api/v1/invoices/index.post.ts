@@ -1,14 +1,18 @@
-import prisma from "~/prisma/db"
+// server/api/v1/invoices/index.post.ts
+import { defineEventHandler, readBody, createError, setResponseStatus } from 'h3'
+import { InvoiceRepository } from '../../../repositories/InvoiceRepository'
+
+const invoiceRepo = new InvoiceRepository()
 
 export default defineEventHandler(async (event) => {
-  const { invoices } = await readBody(event)
-  setResponseStatus(event, 201)
+  const body = await readBody(event)
 
-  const result = await prisma.invoice.create({
-    data: { invoices }
-  })
-  if (!result) {
-    throw createError({ statusCode: 500, statusMessage: 'Failed to create invoices' })
+  try {
+    const invoice = await invoiceRepo.create(body)
+    setResponseStatus(event, 201)
+    return invoice
+  } catch (e: any) {
+    console.error('[API:createInvoice]', e)
+    throw createError({ statusCode: 500, statusMessage: 'Failed to create invoice' })
   }
-  return result
 })

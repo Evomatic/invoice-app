@@ -32,4 +32,9 @@ export default defineNuxtConfig({
   },
 
   modules: ["@prisma/nuxt"],
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL_DEV
+    }
+  }
 });
