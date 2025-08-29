@@ -2,13 +2,8 @@
 
 ### Phase 1: Essential Backend Improvements
 
-#### 1.1 Basic Input Validation
-- [ ] **Simple validation** for required fields and data types
-- [ ] **Basic error responses** with clear messages
-- [ ] **Validate invoice status** (only allow draft/pending/paid)
-
 #### 1.2 Core Business Logic
-- [ ] **Invoice ID generation** (2 random letters + 4 random numbers)
+- [x] **Invoice ID generation** (2 random letters + 4 random numbers)
 - [ ] **Payment due calculation** (createdAt + paymentTerms days)
 - [ ] **Invoice total calculation** from items
 
