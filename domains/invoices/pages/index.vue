@@ -10,18 +10,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import InvoiceApi from '../handler-api/InvoiceApi';
+import type { Invoice } from '../types';
 
-const { $invoiceRepository } = useNuxtApp();
-const invoices = ref([]);
+const invoiceApi = new InvoiceApi();
+const invoices = ref<Invoice[]>([]);
 
 onMounted(async () => {
-  invoices.value = await $invoiceRepository.getAll();
+  try {
+    invoices.value = await invoiceApi.listInvoices();
+  } catch (error) {
+    console.error('Failed to fetch invoices:', error);
+  }
 });
 
 // Example: Get invoice by ID
 async function fetchInvoice(id: string) {
-  const invoice = await $invoiceRepository.getById(id);
-  // do something with invoice
+  try {
+    const invoice = await invoiceApi.getInvoiceById(id);
+    // do something with invoice
+    console.log('Fetched invoice:', invoice);
+  } catch (error) {
+    console.error('Failed to fetch invoice:', error);
+  }
 }
 </script>
