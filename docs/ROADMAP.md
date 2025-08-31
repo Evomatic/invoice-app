@@ -23,8 +23,6 @@
   - **Edit Invoice** → opens form modal
   - **Delete Invoice** → opens confirmation modal
   - **Mark as Paid** → triggers API update
-- [ ] Handle error states (invoice not found, network errors).
-
 ---
 
 ## Phase 4 – Invoice Form (Create & Edit)
@@ -39,6 +37,4 @@
 
 ## Phase 5 – State & Data Handling
 - [ ] Create `useInvoices` composable to handle API calls (CRUD).
-- [ ] Centralize loading/error state handling.
-- [ ] Use optimistic UI updates where possible (e.g., marking paid).
 - [ ] Cache recent invoices for faster navigation.
