@@ -30,20 +30,31 @@ export default class InvoiceRepository implements IInvoiceRepository {
   }
 
   async getAll(): Promise<Invoice[]> {
-    return await prisma.invoice.findMany({
+    const invoices = await prisma.invoice.findMany({
       include: { items: true, clientAddress: true, senderAddress: true },
-    })
+    });
+    return invoices.map((invoice) => ({
+      ...invoice,
+      createdAt: invoice.createdAt instanceof Date ? invoice.createdAt.toISOString() : invoice.createdAt,
+      paymentDue: invoice.paymentDue instanceof Date ? invoice.paymentDue.toISOString() : invoice.paymentDue,
+    }));
   }
 
   async getById(id: string): Promise<Invoice | null> {
-    return await prisma.invoice.findUnique({
+    const invoice = await prisma.invoice.findUnique({
       where: { id },
       include: { items: true, clientAddress: true, senderAddress: true },
-    })
+    });
+    if (!invoice) return null;
+    return {
+      ...invoice,
+      createdAt: invoice.createdAt instanceof Date ? invoice.createdAt.toISOString() : invoice.createdAt,
+      paymentDue: invoice.paymentDue instanceof Date ? invoice.paymentDue.toISOString() : invoice.paymentDue,
+    };
   }
 
   async create(data: Invoice): Promise<Invoice> {
-    return await prisma.invoice.create({
+    const createdInvoice = await prisma.invoice.create({
       data: {
         id: this.generateUniqueInvoiceId(),
         createdAt: data.createdAt,
@@ -58,11 +69,17 @@ export default class InvoiceRepository implements IInvoiceRepository {
         items: { create: data.items }
       },
       include: { items: true, clientAddress: true, senderAddress: true },
-    })
+    });
+
+    return {
+      ...createdInvoice,
+      createdAt: createdInvoice.createdAt instanceof Date ? createdInvoice.createdAt.toISOString() : createdInvoice.createdAt,
+      paymentDue: createdInvoice.paymentDue instanceof Date ? createdInvoice.paymentDue.toISOString() : createdInvoice.paymentDue,
+    };
   }
 
   async update(id: string, data: Invoice): Promise<Invoice> {
-    return await prisma.invoice.update({
+    const updatedInvoice = await prisma.invoice.update({
       where: { id },
       data: {
         id: data.id,
@@ -78,7 +95,13 @@ export default class InvoiceRepository implements IInvoiceRepository {
         items: { create: data.items }
       },
       include: { items: true, clientAddress: true, senderAddress: true },
-    })
+    });
+
+    return {
+      ...updatedInvoice,
+      createdAt: updatedInvoice.createdAt instanceof Date ? updatedInvoice.createdAt.toISOString() : updatedInvoice.createdAt,
+      paymentDue: updatedInvoice.paymentDue instanceof Date ? updatedInvoice.paymentDue.toISOString() : updatedInvoice.paymentDue,
+    };
   }
 
   async delete(id: string): Promise<void> {

@@ -1,11 +1,10 @@
-import { defineNuxtPlugin, useRuntimeConfig } from 'nuxt/app';
-import InvoiceApi from '~/domains/invoices/handler-api/InvoiceApi';
+import { defineNuxtPlugin } from 'nuxt/app';
+import InvoicesApi from '~/domains/invoices/handler-api/InvoicesApi';
 
 export default defineNuxtPlugin(() => {
-  const config = useRuntimeConfig();
   return {
     provide: {
-      invoiceRepository: new InvoiceApi(config.public.apiBaseUrl)
+      invoiceRepository: new InvoicesApi()
     }
   };
 });

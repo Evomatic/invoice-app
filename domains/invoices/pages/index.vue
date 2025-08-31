@@ -11,10 +11,10 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import InvoiceApi from '../handler-api/InvoiceApi';
+import InvoicesApi from '../handler-api/InvoicesApi';
 import type { Invoice } from '../types';
 
-const invoiceApi = new InvoiceApi();
+const invoiceApi = new InvoicesApi();
 const invoices = ref<Invoice[]>([]);
 
 onMounted(async () => {

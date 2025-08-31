@@ -1,27 +1,44 @@
-# Invoice App Development Roadmap
+# 🗺️ Frontend Roadmap (Invoices App)
 
-### Phase 1: Essential Backend Improvements
+## Phase 1 – Layout & Theming
+- [ ] Implement global layout (sidebar/header, content area).
+- [ ] Add **dark/light mode toggle** with persistence in localStorage.
+- [ ] Make layout responsive (desktop, tablet, mobile).
+- [ ] Create shared components: `Button`, `Card`, `Badge`, `Modal`.
 
-#### 1.2 Core Business Logic
-- [x] **Invoice ID generation** (2 random letters + 4 random numbers)
-- [ ] **Payment due calculation** (createdAt + paymentTerms days)
-- [ ] **Invoice total calculation** from items
+---
 
-### Phase 2: Core Frontend Development
+## Phase 2 – Invoice List Page
+- [ ] Fetch invoices from backend (`GET /api/v1/invoices`).
+- [ ] Display list in cards with status badge (Draft / Pending / Paid).
+- [ ] Add **filtering by status** (UI + query to backend).
+- [ ] Implement empty state (“No invoices”).
 
-#### 2.1 Essential UI Components
-- [ ] **Invoice List View** with basic status filtering
-- [ ] **Invoice Detail View** showing all invoice information
-- [ ] **Simple Invoice Form** for create/edit operations
-- [ ] **Status Badge Components** (draft/pending/paid)
-- [ ] **Basic confirmation modal** for delete operations
+---
 
-#### 2.2 Simple State Management
-- [ ] **Use Nuxt's built-in state** instead of Pinia initially
-- [ ] **Basic error handling** without complex error boundaries
-- [ ] **Loading states** for API calls
+## Phase 3 – Invoice Details Page
+- [ ] Fetch single invoice (`GET /api/v1/invoices/:id`).
+- [ ] Show sender + client addresses, line items, and total.
+- [ ] Add action buttons:
+  - **Edit Invoice** → opens form modal
+  - **Delete Invoice** → opens confirmation modal
+  - **Mark as Paid** → triggers API update
+- [ ] Handle error states (invoice not found, network errors).
 
-#### 2.3 Form Handling
-- [ ] **Dynamic invoice items** (add/remove items)
-- [ ] **Address forms** for sender and client
-- [ ] **Basic form validation** with simple checks
+---
+
+## Phase 4 – Invoice Form (Create & Edit)
+- [ ] Create **New Invoice** modal.
+- [ ] Add form fields: client info, sender info, items, payment terms.
+- [ ] Support **Save as Draft** (incomplete allowed, status = draft).
+- [ ] Support **Save & Send** (requires validation, status = pending).
+- [ ] Support **Edit Invoice** (prefill form with API data).
+- [ ] Handle form submission errors and display inline messages.
+
+---
+
+## Phase 5 – State & Data Handling
+- [ ] Create `useInvoices` composable to handle API calls (CRUD).
+- [ ] Centralize loading/error state handling.
+- [ ] Use optimistic UI updates where possible (e.g., marking paid).
+- [ ] Cache recent invoices for faster navigation.
