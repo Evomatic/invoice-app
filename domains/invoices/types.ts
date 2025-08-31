@@ -1,3 +1,5 @@
+import prisma from"../../lib/prisma";
+
 export type Address = {
   id: string;
   street: string;
@@ -11,8 +13,8 @@ export type InvoiceItem = {
   invoiceId: string;
   name: string;
   quantity: number;
-  price: number;
-  total: number;
+  price: prisma.Decimal;
+  total: prisma.Decimal;
 };
 
 export type Invoice = {
