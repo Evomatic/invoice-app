@@ -1,6 +1,6 @@
 // server/api/v1/invoices/[id].delete.ts
 import { defineEventHandler, createError, setResponseStatus } from 'h3'
-import { InvoiceRepository } from '../../../repositories/InvoiceRepository'
+import InvoiceRepository from '~/domains/invoices/server/repositories/InvoiceRepository';
 
 const invoiceRepo = new InvoiceRepository()
 

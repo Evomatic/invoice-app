@@ -1,5 +1,5 @@
 import { createError, defineEventHandler, getRouterParam } from 'h3'
-import { InvoiceRepository } from "../../../repositories/InvoiceRepository"
+import InvoiceRepository from '~/domains/invoices/server/repositories/InvoiceRepository';
 
 const invoiceRepo = new InvoiceRepository()
 
