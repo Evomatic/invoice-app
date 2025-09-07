@@ -5,7 +5,11 @@ export default defineNuxtConfig({
   extends: ["./domains/invoices"],
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
-
+   vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
   alias: {
     "@": "/",
   },
@@ -31,5 +35,5 @@ export default defineNuxtConfig({
     port: 3004,
   },
 
-  modules: ["@prisma/nuxt"],
+  modules: ["@prisma/nuxt", "shadcn-nuxt"],
 });
