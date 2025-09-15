@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h2>Invoices</h2>
+    <h2 class="">Invoices</h2>
+    <Button >Button</Button>
     <ul>
       <li v-for="invoice in invoices" :key="invoice.id">
         {{ invoice.description }} - {{ invoice.status }}
@@ -13,6 +14,7 @@
 import { onMounted, ref } from 'vue';
 import InvoicesApi from '../handler-api/InvoicesApi';
 import type { Invoice } from '../types';
+import Button from '@/components/ui/button/Button.vue';
 
 const invoiceApi = new InvoicesApi();
 const invoices = ref<Invoice[]>([]);
