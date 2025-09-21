@@ -11,6 +11,9 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: 'invoices',
+})
 import { onMounted, ref } from 'vue';
 import InvoicesApi from '../handler-api/InvoicesApi';
 import type { Invoice } from '../types';
