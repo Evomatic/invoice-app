@@ -1,6 +1,6 @@
 // server/api/v1/invoices/index.post.ts
 import { defineEventHandler, readBody, createError, setResponseStatus } from 'h3'
-import InvoiceRepository from '~/domains/invoices/server/repositories/InvoiceRepository';
+import InvoiceRepository from '../../../repositories/InvoiceRepository';
 
 const invoiceRepo = new InvoiceRepository()
 

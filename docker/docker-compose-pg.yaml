@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: invoices-postgres
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
