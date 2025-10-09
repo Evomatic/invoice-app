@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+  --super-purple: #7C5DFA;
+}
