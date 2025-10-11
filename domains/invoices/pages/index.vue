@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="">Invoices</h2>
-    <Button >Button</Button>
+    <h2 class="bg-primary">Invoicess</h2>
+    <Button class="" >Button</Button>
     <ul>
       <li v-for="invoice in invoices" :key="invoice.id">
         {{ invoice.description }} - {{ invoice.status }}

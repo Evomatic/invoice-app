@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --super-purple: #7C5DFA;
+@theme inline {
+  --color-primary: #7C5DFA;
 }
