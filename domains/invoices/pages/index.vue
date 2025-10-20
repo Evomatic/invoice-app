@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2 class="bg-primary">Invoicess</h2>
-    <Button class="" >Button</Button>
+    <h2 class="bg-background dark:bg-background">Invoicess</h2>
+    <Button @click="toggleTheme" class="bg-primary dark:bg-primary">Button</Button>
     <ul>
       <li v-for="invoice in invoices" :key="invoice.id">
         {{ invoice.description }} - {{ invoice.status }}
@@ -15,6 +15,10 @@ import { onMounted, ref } from 'vue';
 import InvoicesApi from '../handler-api/InvoicesApi';
 import type { Invoice } from '../types';
 import Button from '@/components/ui/button/Button.vue';
+
+const toggleTheme = () => {
+  document.documentElement.classList.toggle('dark')
+}
 
 const invoiceApi = new InvoicesApi();
 const invoices = ref<Invoice[]>([]);
