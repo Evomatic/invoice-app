@@ -27,7 +27,7 @@
 
   /* Light theme */
 --color-primary: var(--color-indigo-500);
---color-secondary: ; var(--color-indigo-100);
+--color-secondary: var(--color-indigo-100);
 --color-background: var(--color-navy-50);
 --color-foreground: var(--color-navy-700);
 --color-text: var(--color-indigo-950);
