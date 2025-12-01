@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ["./domains/invoices"],
+
   compatibilityDate: "2025-05-15",
   devtools: { enabled: true },
   vite: {
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   },
 
   modules: ["@prisma/nuxt", 'shadcn-nuxt', '@nuxtjs/tailwindcss'],
-  css: ['/domains/invoices/assets/css/tailwind.css'],
+  css: ['~/assets/css/tailwind.css'],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -52,6 +52,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: '/domains/invoices/components/ui'
+    componentDir: './components/ui'
   },
 });
