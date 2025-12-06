@@ -3,7 +3,7 @@ docker compose -f ./docker/docker-compose-pg.yaml up -d
 
 # Wait for the database to be ready
 echo "Waiting for Postgres to be ready..."
-until docker exec postgres pg_isready -U postgres; do
+until docker exec invoices-postgres pg_isready -U postgres; do
   sleep 2
 done
 
