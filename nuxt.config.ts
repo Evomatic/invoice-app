@@ -41,7 +41,12 @@ export default defineNuxtConfig({
     port: 3004,
   },
 
-  modules: ["@prisma/nuxt", 'shadcn-nuxt', '@nuxtjs/tailwindcss'],
+  modules: ["@prisma/nuxt", 'shadcn-nuxt', '@nuxtjs/tailwindcss', "@nuxt/eslint"],
+  eslint: {
+    config: {
+      stylistic: true
+    }
+  },
   css: ['~/assets/css/tailwind.css'],
   shadcn: {
     /**
