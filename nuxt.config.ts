@@ -1,11 +1,37 @@
-import { defineNuxtConfig } from "nuxt/config";
+import { defineNuxtConfig } from 'nuxt/config'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  compatibilityDate: "2025-05-15",
+  modules: ['@prisma/nuxt', 'shadcn-nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
   devtools: { enabled: true },
+
+  app: {
+    baseURL: '/',
+    head: {
+      title: 'Invoice app',
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: 'A Nuxt 3 application' },
+      ],
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap',
+        },
+      ],
+    },
+  },
+  css: ['~/assets/css/tailwind.css'],
+  alias: {
+    '@/*': './*',
+  },
+
+  devServer: {
+    port: 3004,
+  },
+  compatibilityDate: '2025-05-15',
   vite: {
     plugins: [
       tailwindcss(),
@@ -16,38 +42,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  alias: {
-    "@/*": "./*",
-  },
-
-  app: {
-    baseURL: "/",
-    head: {
-      title: "Invoice app",
-      meta: [
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "description", content: "A Nuxt 3 application" },
-      ],
-      link: [
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap",
-        },
-      ],
-    },
-  },
-
-  devServer: {
-    port: 3004,
-  },
-
-  modules: ["@prisma/nuxt", 'shadcn-nuxt', '@nuxtjs/tailwindcss', "@nuxt/eslint"],
   eslint: {
     config: {
-      stylistic: true
-    }
+      stylistic: true,
+    },
   },
-  css: ['~/assets/css/tailwind.css'],
   shadcn: {
     /**
      * Prefix for all the imported component
@@ -57,6 +56,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './components/ui'
+    componentDir: './components/ui',
   },
-});
+})

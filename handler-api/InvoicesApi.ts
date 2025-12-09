@@ -1,5 +1,5 @@
-import { $fetch } from 'ofetch';
-import type { Invoice } from '../types';
+import { $fetch } from 'ofetch'
+import type { Invoice } from '../types'
 
 interface IInvoiceApi {
   listInvoices(): Promise<Invoice[]>
@@ -10,24 +10,23 @@ interface IInvoiceApi {
 }
 
 export default class InvoiceApi implements IInvoiceApi {
-
   async listInvoices() {
-    return $fetch<Invoice[]>("api/v1/invoices");
+    return $fetch<Invoice[]>('api/v1/invoices')
   }
 
   async getInvoiceById(id: string) {
-    return $fetch<Invoice>(`api/v1/invoices/${id}`);
+    return $fetch<Invoice>(`api/v1/invoices/${id}`)
   }
 
   async createInvoice(data: Partial<Invoice>) {
-    return $fetch<Invoice>("api/v1/invoices", { method: 'POST', body: data });
+    return $fetch<Invoice>('api/v1/invoices', { method: 'POST', body: data })
   }
 
   async updateInvoice(id: string, data: Partial<Invoice>) {
-    return $fetch<Invoice>(`api/v1/invoices/${id}`, { method: 'PATCH', body: data });
+    return $fetch<Invoice>(`api/v1/invoices/${id}`, { method: 'PATCH', body: data })
   }
 
   async deleteInvoice(id: string) {
-    return $fetch<void>(`api/v1/invoices/${id}`, { method: 'DELETE' });
+    return $fetch(`api/v1/invoices/${id}`, { method: 'DELETE' })
   }
 }

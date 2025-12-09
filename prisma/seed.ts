@@ -1,11 +1,11 @@
 import { PrismaClient } from '@prisma/client'
-import { readFileSync } from 'fs';
+import { readFileSync } from 'fs'
 
 const prisma = new PrismaClient()
 
 const data = JSON.parse(
-  readFileSync(new URL('./data.json', import.meta.url), 'utf-8')
-);
+  readFileSync(new URL('./data.json', import.meta.url), 'utf-8'),
+)
 
 async function main() {
   for (const invoice of data) {
@@ -29,7 +29,7 @@ async function main() {
           create: invoice.items,
         },
       },
-    });
+    })
   }
 }
 main()

@@ -1,6 +1,7 @@
 // server/api/v1/invoices/[id].patch.ts
 import { defineEventHandler, readBody, createError } from 'h3'
-import InvoiceRepository from '../../../repositories/InvoiceRepository';
+import InvoiceRepository from '../../../repositories/InvoiceRepository'
+import type { PrismaError } from '../../../../types'
 
 const invoiceRepo = new InvoiceRepository()
 
@@ -14,8 +15,9 @@ export default defineEventHandler(async (event) => {
 
   try {
     return await invoiceRepo.update(id, body)
-  } catch (e: any) {
-    if (e.code === 'P2025') {
+  }
+  catch (e: unknown) {
+    if ((e as PrismaError).code === 'P2025') {
       throw createError({ statusCode: 404, statusMessage: 'Invoice not found' })
     }
     throw createError({ statusCode: 500, statusMessage: 'Failed to update invoice' })
