@@ -1,10 +1,10 @@
-import { defineNuxtPlugin } from 'nuxt/app';
-import InvoicesApi from '../domains/invoices/handler-api/InvoicesApi'
+import { defineNuxtPlugin } from 'nuxt/app'
+import InvoicesApi from '../handler-api/InvoicesApi'
 
 export default defineNuxtPlugin(() => {
   return {
     provide: {
-      invoiceRepository: new InvoicesApi()
-    }
-  };
-});
+      invoiceRepository: new InvoicesApi(),
+    },
+  }
+})

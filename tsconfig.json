@@ -4,7 +4,7 @@
   
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": { "@/*": ["domains/invoices/*"] },
+    "paths": { "@/*": ["./*"] },
     "types": [
       "node"
     ]

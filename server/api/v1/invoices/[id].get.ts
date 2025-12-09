@@ -6,7 +6,7 @@ const invoiceRepo = new InvoiceRepository()
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
 
-   if (!id) {
+  if (!id) {
     throw createError({ statusCode: 400, statusMessage: 'ID parameter is required' })
   }
 

@@ -1,5 +1,5 @@
-import { defineEventHandler } from "h3"
-import InvoiceRepository from '../../../repositories/InvoiceRepository';
+import { defineEventHandler } from 'h3'
+import InvoiceRepository from '../../../repositories/InvoiceRepository'
 
 const invoiceRepo = new InvoiceRepository()
 
