@@ -24,7 +24,7 @@
 import { onMounted, ref } from 'vue'
 import InvoicesApi from '../handler-api/InvoicesApi'
 import type { Invoice } from '../types'
-import Button from '@/components/ui/button/Button.vue'
+import { Button } from '@/components/ui/button'
 
 const toggleTheme = () => {
   document.documentElement.classList.toggle('dark')
