@@ -1,22 +1,6 @@
 <template>
   <div>
-    <h2 class="bg-background dark:bg-background">
-      Invoicess
-    </h2>
-    <Button
-      class="bg-primary dark:bg-primary"
-      @click="toggleTheme"
-    >
-      Button
-    </Button>
-    <ul>
-      <li
-        v-for="invoice in invoices"
-        :key="invoice.id"
-      >
-        {{ invoice.description }} - {{ invoice.status }}
-      </li>
-    </ul>
+   
   </div>
 </template>
 

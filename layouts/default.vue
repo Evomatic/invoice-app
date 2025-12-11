@@ -5,16 +5,16 @@
     >
       <slot name="sidebar" />
 
-      <!-- <div class="h-12 bg-gray-400 rounded"></div>
+      <div class="h-12 bg-gray-400 rounded"></div>
 
       <div class="space-y-3">
         <div class="h-8 bg-gray-300 rounded"></div>
         <div class="h-8 bg-gray-300 rounded"></div>
-      </div> -->
+      </div>
     </aside>
 
-    <!-- <main class="flex-1 grid place-items-center p-6">
-      <div class="h-32 w-1/2 bg-gray-200 rounded"></div>
-    </main> -->
+    <main class="flex-1 grid place-items-center p-6">
+      <slot />
+    </main>
   </div>
 </template>
