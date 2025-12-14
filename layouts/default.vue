@@ -1,6 +1,8 @@
 <template>
   <div class="flex flex-col md:flex-row h-screen bg-background">
-    <aside class="md:rounded-tr-3xl md:rounded-br-3xl w-full md:w-26 bg-[#373B53] border-b md:border-b-0 md:border-r flex flex-row md:flex-col">
+    <aside
+      class="flex justify-between md:rounded-tr-3xl md:rounded-br-3xl w-full md:w-26 bg-[#373B53] border-b md:border-b-0 md:border-r lex-row md:flex-col"
+    >
       <div class="flex flex-row md:flex-col space-x-3 md:space-x-0 md:space-y-3">
         <div
           class="
@@ -26,6 +28,20 @@
     "
           />
         </div>
+      </div>
+       <div class="relative md:w-full w-20 h-20 md:h-22 ml-auto md:ml-0 md:mt-auto">
+        <img
+          class="h-5 w-5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/svg/icon-moon.svg"
+          alt="The header moon theme button icon."
+        >
+      </div>
+      <div class="relative md:w-full w-20 h-20 md:h-22 border-l-2 md:border-t-1 border-gray-600 md:border-l-0">
+        <img
+          class=" md:w-10 md:h-10 rounded-full h-8 w-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          src="/image-avatar.jpg"
+          alt="The header avatar image."
+        >
       </div>
     </aside>
 
