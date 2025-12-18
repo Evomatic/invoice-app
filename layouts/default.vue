@@ -1,7 +1,10 @@
 <template>
-  <div class="flex flex-col md:flex-row h-screen bg-background" :data-theme="currentTheme">
+  <div
+    class="flex flex-col md:flex-row h-screen bg-background dark:bg-navy-900"
+    :data-theme="currentTheme"
+  >
     <aside
-      class="flex justify-between md:rounded-tr-3xl md:rounded-br-3xl w-full md:w-26 bg-navy-600 border-b md:border-b-0 md:border-r lex-row md:flex-col"
+      class="border-none flex justify-between md:rounded-tr-3xl md:rounded-br-3xl w-full md:w-26 bg-navy-600 border-b md:border-b-0 md:border-r lex-row md:flex-col"
     >
       <div class="flex flex-row md:flex-col space-x-3 md:space-x-0 md:space-y-3">
         <div
@@ -30,7 +33,10 @@
         </div>
       </div>
       <div class="flex flex-col justify-center md:w-full w-20 h-20 md:h-22 ml-auto md:ml-0 md:mt-auto">
-        <Button class="bg-navy-600 hover:bg-navy-600">
+        <Button
+          class="bg-navy-600 hover:bg-navy-600"
+          @click="toggleTheme"
+        >
           <img
             src="/svg/icon-moon.svg"
             alt="The header moon theme button icon."
@@ -46,7 +52,7 @@
       </div>
     </aside>
 
-    <main class="flex-1 grid place-items-center p-6 overflow-auto">
+    <main class="flex-1 grid place-items-center p-6 overflow-auto dark:bg-navy-900">
       <slot />
     </main>
   </div>
@@ -58,5 +64,8 @@ import { Button } from '@/components/ui/button'
 
 const currentTheme = ref<'light' | 'dark'>('light' as const)
 
-
+const toggleTheme = () => {
+  currentTheme.value = currentTheme.value === 'light' ? 'dark' : 'light'
+  console.log(`Current theme: ${currentTheme.value}`)
+}
 </script>
