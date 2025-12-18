@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 @theme {
 /* Typography */
@@ -17,6 +24,7 @@
   --color-slate-400: #888EB0;
   --color-slate-500: #7E88C3;
 
+  --color-navy-600: #373B53;
   --color-navy-700: #1E2139;
   --color-navy-800: #252945;
   --color-navy-900: #141625;
