@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -25,23 +24,13 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/tailwind.css'],
   alias: {
-    '@/*': './*',
+    '@': './',
   },
 
   devServer: {
     port: 3004,
   },
   compatibilityDate: '2025-05-15',
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ],
-    resolve: {
-      alias: {
-        '.prisma/client/index-browser': './node_modules/.prisma/client/index-browser.js',
-      },
-    },
-  },
   eslint: {
     config: {
       stylistic: true,
@@ -56,6 +45,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './components/ui',
+    componentDir: '~/components/ui',
   },
 })
