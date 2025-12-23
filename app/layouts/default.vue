@@ -60,7 +60,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { Button } from '@/components/ui/button'
+import { Button } from '../components/ui/button/index'
 
 const currentTheme = ref<'light' | 'dark'>('light' as const)
 

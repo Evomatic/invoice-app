@@ -1,4 +1,4 @@
-import type { Invoice } from '../types'
+import type { Invoice } from '../../types'
 import { useFetch } from 'nuxt/app'
 
 
