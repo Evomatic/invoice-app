@@ -1,10 +1,12 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ['@prisma/nuxt', 'shadcn-nuxt', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['@prisma/nuxt', 'shadcn-nuxt', '@nuxt/eslint'],
   devtools: { enabled: true },
+    vite: {    plugins: [      tailwindcss(),    ],  },
 
   app: {
     baseURL: '/',
@@ -22,8 +24,8 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ['~/assets/css/tailwind.css'],
-  alias: {
+  css: ['./app/assets/css/tailwind.css'],
+  alias: {  
     '@': './',
   },
 
