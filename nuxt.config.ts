@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: ['@prisma/nuxt', 'shadcn-nuxt', '@nuxt/eslint'],
+  modules: ['shadcn-nuxt', '@nuxt/eslint'],
   devtools: { enabled: true },
     vite: {    plugins: [      tailwindcss(),    ],  },
 

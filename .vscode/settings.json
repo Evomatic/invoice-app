@@ -5,4 +5,5 @@
   },
   "editor.formatOnSave": true,
   "eslint.enable": true,
+  "prisma.pinToPrisma6": true,
 }
