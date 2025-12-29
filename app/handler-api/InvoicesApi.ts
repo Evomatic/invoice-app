@@ -1,7 +1,6 @@
 import type { Invoice } from '../../types'
 import { useFetch } from 'nuxt/app'
 
-
 export default class InvoiceApi {
   listInvoices() {
     return useFetch<Invoice[]>('api/v1/invoices')

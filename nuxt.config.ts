@@ -1,12 +1,11 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
   modules: ['shadcn-nuxt', '@nuxt/eslint'],
   devtools: { enabled: true },
-    vite: {    plugins: [      tailwindcss(),    ],  },
 
   app: {
     baseURL: '/',
@@ -25,7 +24,7 @@ export default defineNuxtConfig({
     },
   },
   css: ['./app/assets/css/tailwind.css'],
-  alias: {  
+  alias: {
     '@': './',
   },
 
@@ -33,6 +32,7 @@ export default defineNuxtConfig({
     port: 3004,
   },
   compatibilityDate: '2025-05-15',
+  vite: { plugins: [tailwindcss()] },
   eslint: {
     config: {
       stylistic: true,

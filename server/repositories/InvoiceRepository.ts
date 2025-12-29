@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import type { Invoice } from '../../types'
-import { prisma } from '../../prisma/seed'
+import { prisma } from '../utils/db'
 
 interface IInvoiceRepository {
   getAll(): Promise<Invoice[]>
