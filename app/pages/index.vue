@@ -1,5 +1,12 @@
 <template>
-  <div />
+  <div class="h-full max-w-183 grid grid-cols-1 grid-rows-2 w-full">
+    <div class="row-end-4 h-14 border-2 row-span-full col-span-full ">
+      one
+    </div>
+    <div class="row-start-2 row-span-full border-2 col-span-full">
+      two
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
