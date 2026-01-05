@@ -4,19 +4,19 @@
     :data-theme="currentTheme"
   >
     <aside
-      class="border-none flex justify-between lg:rounded-tr-3xl lg:rounded-br-3xl w-full lg:w-26 bg-navy-600 border-b lg:border-b-0 flex-row lg:flex-col"
+      class="border-none flex justify-between lg:rounded-tr-3xl lg:rounded-br-3xl w-full lg:w-26 bg-navy-600 border-b lg:border-b-0 lg:border-r lex-row lg:flex-col"
     >
       <div class="flex flex-row lg:flex-col space-x-3 lg:space-x-0 lg:space-y-3">
         <div
           class="
-          relative
-          w-20 h-20
-          lg:w-full lg:h-26
-          grid items-center justify-center
-          bg-primary
-          rounded-r-3xl lg:rounded-none lg:rounded-br-3xl lg:rounded-tr-3xl
-          overflow-hidden
-        "
+    relative
+    w-20 h-20
+    lg:w-full lg:h-26
+    grid items-center justify-center
+    bg-primary
+    rounded-r-3xl lg:rounded-none lg:rounded-br-3xl lg:rounded-tr-3xl
+    overflow-hidden
+  "
         >
           <img
             src="/svg/logo.svg"
